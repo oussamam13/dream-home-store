@@ -124,7 +124,8 @@ footer{text-align:center;background:var(--deep);color:#c9d8db;padding:28px 16px 
   <div class="logo"><span class="lg" id="lg"></span>Dream Home</div>
   <div class="search" id="searchWrap"><input id="q" type="search" placeholder="Search furniture, lighting, decor… | ابحث عن الأثاث والإضاءة والديكور…" aria-label="Search products"></div>
   <button class="cart" id="cartBtn" aria-label="Cart">🛒<b id="cnt">0</b></button>
-  <button class="btn gold" id="mode">⚙️ Admin Panel <span class="ar">لوحة التحكم</span></button>
+  <button class="btn gold" id="mode" hidden>⚙️ Admin Panel <span class="ar">لوحة التحكم</span></button>
+  <button class="btn" id="logout" style="background:var(--bg)" hidden>Log out <span class="ar">تسجيل الخروج</span></button>
 </div></header>
 
 <main>
@@ -133,6 +134,15 @@ footer{text-align:center;background:var(--deep);color:#c9d8db;padding:28px 16px 
   <div class="row" id="prods"><h2>Featured Products <span class="ar">المنتجات المميزة</span></h2><div class="chips" id="chips"></div></div>
   <div class="grid" id="grid"></div>
 </section>
+
+<section id="login" hidden><div class="panel" style="max-width:420px;margin:40px auto">
+  <h3 style="margin-top:0" id="lgT">Admin sign in <span class="ar">تسجيل دخول المسؤول</span></h3>
+  <form id="lgF"><label>Email <span class="ar">البريد الإلكتروني</span></label><input id="lgE" type="email" autocomplete="username" required>
+  <label>Password <span class="ar">كلمة المرور</span></label><input id="lgP" type="password" autocomplete="current-password" required>
+  <button class="btn gold" style="width:100%;margin-top:14px" id="lgB">Sign in <span class="ar">دخول</span></button></form>
+  <p id="lgM" style="margin-bottom:0;color:#b42318" hidden></p>
+  <p style="margin-bottom:0"><a href="/">← Back to store <span class="ar">العودة إلى المتجر</span></a></p>
+</div></section>
 
 <section id="admin" hidden>
   <div class="tabs">
@@ -289,6 +299,36 @@ $("ss").onclick=function(){var d=$("sw").value.replace(/\D/g,"");if(d.charAt(0)=
 var AR={All:"All statuses | كل الحالات",Pending:"Pending | قيد الانتظار",Confirmed:"Confirmed | مؤكد",Shipped:"Shipped | تم الشحن",Delivered:"Delivered | تم التسليم",Cancelled:"Cancelled | ملغى"};function SL(x){return AR[x]||x}
 $("of").innerHTML=["All"].concat(STATUS).map(function(x){return '<option value="'+x+'">'+SL(x)+'</option>'}).join("");
 setLogo();applyS();fillS();render();
+var IS_ADMIN=/^\/admin\/?$/.test(location.pathname);
+if(!IS_ADMIN&&/(invite|recovery|confirmation)_token=/.test(location.hash))location.replace("/admin"+location.hash);
+if(IS_ADMIN){$("store").hidden=true;$("searchWrap").style.visibility="hidden";$("wawid").style.display="none";$("login").hidden=false}
+</script>
+<script type="module">
+/* Admin access: only signed-in Netlify Identity users with the "admin" role can open the panel at /admin */
+if(window.IS_ADMIN){
+const id=await import("https://esm.sh/@netlify/identity@2.0.0");
+const $=i=>document.getElementById(i),msg=t=>{$("lgM").textContent=t;$("lgM").hidden=!t};
+const isAdmin=u=>!!u&&((u.appMetadata&&u.appMetadata.roles)||(u.app_metadata&&u.app_metadata.roles)||u.roles||[]).includes("admin");
+let inviteToken=null,pendingRecovery=false;
+function grant(u){
+  if(!isAdmin(u)){msg(u?"This account does not have admin access. | هذا الحساب لا يملك صلاحية المسؤول.":"");return false}
+  $("login").hidden=true;$("mode").hidden=false;$("logout").hidden=false;
+  if(!window.admin)$("mode").click();
+  return true}
+$("logout").onclick=async()=>{try{await id.logout()}catch(e){}location.href="/"};
+$("lgF").onsubmit=async e=>{e.preventDefault();msg("");$("lgB").disabled=true;
+  try{const u=inviteToken?await id.acceptInvite(inviteToken,$("lgP").value):await id.login($("lgE").value.trim(),$("lgP").value);
+    inviteToken=null;history.replaceState(null,"","/admin");grant(u)}
+  catch(err){msg(err&&err.status===401?"Invalid email or password. | البريد الإلكتروني أو كلمة المرور غير صحيحة.":(err&&err.message)||"Sign in failed.")}
+  finally{$("lgB").disabled=false}};
+try{
+  const r=await id.handleAuthCallback();
+  if(r&&r.type==="invite"){inviteToken=r.token;$("lgT").innerHTML='Set your admin password <span class="ar">عيّن كلمة مرور المسؤول</span>';$("lgE").closest("form").querySelector("label").hidden=true;$("lgE").hidden=true;$("lgE").required=false;$("lgP").autocomplete="new-password"}
+  else if(r&&r.type==="recovery"){pendingRecovery=true;$("lgT").innerHTML='Choose a new password <span class="ar">اختر كلمة مرور جديدة</span>';$("lgE").closest("form").querySelector("label").hidden=true;$("lgE").hidden=true;$("lgE").required=false;
+    $("lgF").onsubmit=async e=>{e.preventDefault();try{const u=await id.updateUser({password:$("lgP").value});history.replaceState(null,"","/admin");location.reload()}catch(err){msg(err.message)}}}
+}catch(e){msg(e&&e.message||"")}
+if(!inviteToken&&!pendingRecovery)grant(await id.getUser());
+}
 </script>
 </body>
 </html>
