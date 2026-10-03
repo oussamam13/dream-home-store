@@ -140,6 +140,7 @@ footer{text-align:center;background:var(--deep);color:#c9d8db;padding:28px 16px 
   <form id="lgF"><label>Email <span class="ar">البريد الإلكتروني</span></label><input id="lgE" type="email" autocomplete="username" required>
   <label>Password <span class="ar">كلمة المرور</span></label><input id="lgP" type="password" autocomplete="current-password" required>
   <button class="btn gold" style="width:100%;margin-top:14px" id="lgB">Sign in <span class="ar">دخول</span></button></form>
+  <p style="margin:10px 0 0;text-align:center"><a href="#" id="lgR">Forgot password? <span class="ar">نسيت كلمة المرور؟</span></a></p>
   <p id="lgM" style="margin-bottom:0;color:#b42318" hidden></p>
   <p style="margin-bottom:0"><a href="/">← Back to store <span class="ar">العودة إلى المتجر</span></a></p>
 </div></section>
@@ -179,7 +180,7 @@ footer{text-align:center;background:var(--deep);color:#c9d8db;padding:28px 16px 
 
 <script>
 var WA="213000000000"; // replace with the shop's WhatsApp number (international format, no +)
-var WIL="Adrar,Chlef,Laghouat,Oum El Bouaghi,Batna,Béjaïa,Biskra,Béchar,Blida,Bouira,Tamanrasset,Tébessa,Tlemcen,Tiaret,Tizi Ouzou,Alger,Djelfa,Jijel,Sétif,Saïda,Skikda,Sidi Bel Abbès,Annaba,Guelma,Constantine,Médéa,Mostaganem,M'Sila,Mascara,Ouargla,Oran,El Bayadh,Illizi,Bordj Bou Arréridj,Boumerdès,El Tarf,Tindouf,Tissemsilt,El Oued,Khenchela,Souk Ahras,Tipaza,Mila,Aïn Defla,Naâma,Aïn Témouchent,Ghardaïa,Relizane,Timimoun,Bordj Badji Mokhtar,Ouled Djellal,Béni Abbès,In Salah,In Guezzam,Touggourt,Djanet,El M'Ghair,El Meniaa".split(",");
+var WIL="Adrar,Chlef,Laghouat,Oum El Bouaghi,Batna,Béjaïa,Biskra,Béchar,Blida,Bouira,Tamanrasset,Tébessa,Tlemcen,Tiaret,Tizi Ouzou,Alger,Djelfa,Jijel,Sétif,Saïda,Skikda,Sidi Bel Abbès,Annaba,Guelma,Constantine,Médéa,Mostaganem,M'Sila,Mascara,Ouargla,Oran,El Bayadh,Illizi,Bordj Bou Arréridj,Boumerdès,El Tarf,Tindouf,Tissemsilt,El Oued,Khenchela,Souk Ahras,Tipaza,Mila,Aïn Defla,Naâma,Aïn Témouchent,Ghardaïa,Relizane,Timimoun,Bordj Badji Mokhtar,Ouled Djellal,Béni Abbès,In Salah,In Guezzam,Touggourt,Djanet,El M'Ghair,El Meniaa,Aflou,Barika,El Kantara,Bir El Ater,El Aricha,Ksar Chellala,Aïn Oussara,Messaad,Ksar El Boukhari,Bou Saâda,El Abiodh Sidi Cheikh".split(",");
 var STATUS=["Pending","Confirmed","Shipped","Delivered","Cancelled"];
 function art(c1,c2,kind){var s={sofa:'<rect x="40" y="95" width="220" height="50" rx="14" fill="#fff" opacity=".9"/><rect x="55" y="65" width="190" height="45" rx="14" fill="#fff" opacity=".7"/><rect x="30" y="85" width="30" height="60" rx="12" fill="#fff"/><rect x="240" y="85" width="30" height="60" rx="12" fill="#fff"/>',lamp:'<path d="M110 40h80l25 60h-130z" fill="#fff" opacity=".9"/><rect x="146" y="100" width="8" height="45" fill="#fff"/><rect x="120" y="143" width="60" height="8" rx="4" fill="#fff"/>',desk:'<rect x="40" y="70" width="220" height="14" rx="4" fill="#fff"/><rect x="55" y="84" width="10" height="62" fill="#fff"/><rect x="235" y="84" width="10" height="62" fill="#fff"/><rect x="170" y="84" width="60" height="30" fill="#fff" opacity=".6"/>',vase:'<path d="M130 45h40l-6 25c28 20 22 70-14 76-36-6-42-56-14-76z" fill="#fff" opacity=".9"/>',tv:'<rect x="40" y="105" width="220" height="30" rx="4" fill="#fff"/><rect x="95" y="50" width="110" height="55" rx="3" fill="#fff" opacity=".6"/>',shelf:'<rect x="70" y="35" width="8" height="110" fill="#fff"/><rect x="222" y="35" width="8" height="110" fill="#fff"/><rect x="70" y="60" width="160" height="7" fill="#fff"/><rect x="70" y="100" width="160" height="7" fill="#fff"/><rect x="70" y="140" width="160" height="7" fill="#fff"/>',mirror:'<ellipse cx="150" cy="95" rx="55" ry="70" fill="none" stroke="#fff" stroke-width="10"/><ellipse cx="150" cy="95" rx="44" ry="59" fill="#fff" opacity=".25"/>'}[kind];
 var svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 190"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+c1+'"/><stop offset="1" stop-color="'+c2+'"/></linearGradient></defs><rect width="300" height="190" fill="url(#g)"/>'+s+'</svg>';
@@ -193,12 +194,12 @@ var P=[
 {id:6,t:"Open Bookcase",c:"Shelves",p:39000,o:46000,i:art("#8a6d1d","#D4AF37","shelf"),d:"Five-tier bookcase in oak veneer."},
 {id:7,t:"Oval Wall Mirror",c:"Decor",p:18900,o:22000,i:art("#3d5a52","#8fb3a6","mirror"),d:"Oval mirror with a slim black metal frame."},
 {id:8,t:"Ceramic Table Vase",c:"Decor",p:6900,o:8500,i:art("#7a5c4a","#c49a7a","vase"),d:"Hand-glazed stoneware vase in a matte clay tone."}];
-var S={wa:"213000000000",ph:"",em:"",ad:"",bar:"🚚 Fast Delivery to 58 Provinces + Cash on Delivery Available! | 🚚 توصيل سريع إلى 58 ولاية + الدفع عند الاستلام متوفر!",ship:0,note:"Pay in cash when your order arrives. | ادفع نقدًا عند استلام طلبك.",cur:"DZD"};
+var S={wa:"213000000000",ph:"",em:"",ad:"",bar:"🚚 Fast Delivery to 69 Provinces + Cash on Delivery Available! | 🚚 توصيل سريع إلى 69 ولاية + الدفع عند الاستلام متوفر!",ship:0,note:"Pay in cash when your order arrives. | ادفع نقدًا عند استلام طلبك.",cur:"DZD"};
 var O=[],cart=[],cat="All",nid=9,upImg="",logoData="";
 try{var sv=JSON.parse(localStorage.getItem("dh2"));if(sv){P=sv.P;O=sv.O;nid=sv.n;if(sv.S)for(var k in sv.S)S[k]=sv.S[k]}logoData=localStorage.getItem("dhl")||""}catch(e){}
 var TA={3:"مكتب بلوط عصري",4:"طاولة قهوة رخامية",5:"حامل تلفزيون من الجوز 180 سم",6:"مكتبة مفتوحة",7:"مرآة جدارية بيضاوية",8:"مزهرية سيراميك"};
 P=P.filter(function(x){return x.c!=="Chairs"});P.forEach(function(x){if(!x.ta&&TA[x.id])x.ta=TA[x.id]});
-if(S.bar==="🚚 Fast Delivery to 58 Provinces + Cash on Delivery Available!")S.bar="🚚 Fast Delivery to 58 Provinces + Cash on Delivery Available! | 🚚 توصيل سريع إلى 58 ولاية + الدفع عند الاستلام متوفر!";
+if(S.bar==="🚚 Fast Delivery to 58 Provinces + Cash on Delivery Available!"||S.bar==="🚚 Fast Delivery to 58 Provinces + Cash on Delivery Available! | 🚚 توصيل سريع إلى 58 ولاية + الدفع عند الاستلام متوفر!")S.bar="🚚 Fast Delivery to 69 Provinces + Cash on Delivery Available! | 🚚 توصيل سريع إلى 69 ولاية + الدفع عند الاستلام متوفر!";
 if(S.note==="Pay in cash when your order arrives.")S.note="Pay in cash when your order arrives. | ادفع نقدًا عند استلام طلبك.";
 O.forEach(function(o,k){if(!o.id)o.id=Date.now()+k;if(o.st==="New")o.st="Pending"});
 function save(){try{localStorage.setItem("dh2",JSON.stringify({P:P,O:O,n:nid,S:S}))}catch(e){toast("Storage is full. Use a smaller image or delete products. | مساحة التخزين ممتلئة. استخدم صورة أصغر أو احذف منتجات.")}}
@@ -321,10 +322,14 @@ $("lgF").onsubmit=async e=>{e.preventDefault();msg("");$("lgB").disabled=true;
     inviteToken=null;history.replaceState(null,"","/admin");grant(u)}
   catch(err){msg(err&&err.status===401?"Invalid email or password. | البريد الإلكتروني أو كلمة المرور غير صحيحة.":(err&&err.message)||"Sign in failed.")}
   finally{$("lgB").disabled=false}};
+$("lgR").onclick=async e=>{e.preventDefault();const em=$("lgE").value.trim();
+  if(!em){msg("Enter your admin email above, then tap \"Forgot password?\". | أدخل بريدك الإلكتروني أعلاه ثم اضغط \"نسيت كلمة المرور؟\".");$("lgE").focus();return}
+  try{await id.requestPasswordRecovery(em);msg("If this email has an admin account, a password reset link has been sent. | إذا كان لهذا البريد حساب مسؤول، فقد أُرسل رابط إعادة تعيين كلمة المرور.")}
+  catch(err){msg((err&&err.message)||"Could not send reset email.")}};
 try{
   const r=await id.handleAuthCallback();
-  if(r&&r.type==="invite"){inviteToken=r.token;$("lgT").innerHTML='Set your admin password <span class="ar">عيّن كلمة مرور المسؤول</span>';$("lgE").closest("form").querySelector("label").hidden=true;$("lgE").hidden=true;$("lgE").required=false;$("lgP").autocomplete="new-password"}
-  else if(r&&r.type==="recovery"){pendingRecovery=true;$("lgT").innerHTML='Choose a new password <span class="ar">اختر كلمة مرور جديدة</span>';$("lgE").closest("form").querySelector("label").hidden=true;$("lgE").hidden=true;$("lgE").required=false;
+  if(r&&r.type==="invite"){inviteToken=r.token;$("lgT").innerHTML='Set your admin password <span class="ar">عيّن كلمة مرور المسؤول</span>';$("lgE").closest("form").querySelector("label").hidden=true;$("lgE").hidden=true;$("lgE").required=false;$("lgR").hidden=true;$("lgP").autocomplete="new-password"}
+  else if(r&&r.type==="recovery"){pendingRecovery=true;$("lgT").innerHTML='Choose a new password <span class="ar">اختر كلمة مرور جديدة</span>';$("lgE").closest("form").querySelector("label").hidden=true;$("lgE").hidden=true;$("lgE").required=false;$("lgR").hidden=true;
     $("lgF").onsubmit=async e=>{e.preventDefault();try{const u=await id.updateUser({password:$("lgP").value});history.replaceState(null,"","/admin");location.reload()}catch(err){msg(err.message)}}}
 }catch(e){msg(e&&e.message||"")}
 if(!inviteToken&&!pendingRecovery)grant(await id.getUser());
