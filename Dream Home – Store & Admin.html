@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dream Home</title>
+<style>
+:root{--petrol:#1C4951;--deep:#0F2F35;--navy:#0F2F35;--gold:#D4AF37;--gold2:#E5C158;--bg:#F8F9FA;--card:#FFFFFF;--ink:#1C313E;--mute:#6b7780;--line:#e5e8ec;--wa:#25D366;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10181d;--card:#18252c;--ink:#eef2f4;--mute:#9fb0b8;--line:#2a3a43}}
+:root[data-theme="dark"]{--bg:#10181d;--card:#18252c;--ink:#eef2f4;--mute:#9fb0b8;--line:#2a3a43}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}[hidden]{display:none!important}.del.arm{background:#b42318;color:#fff}.sg{display:grid;gap:0 16px;grid-template-columns:1fr}@media(min-width:620px){.sg{grid-template-columns:1fr 1fr}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.5}
+h1,h2,h3,.logo{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.01em}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.bar{background:var(--navy);color:#f3e7b6;text-align:center;font-size:.85rem;padding:8px 12px}
+header{background:var(--petrol);color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:20}
+.hd{max-width:1180px;margin:auto;display:flex;align-items:center;gap:14px;padding:12px 16px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:8px;font-size:1.45rem;white-space:nowrap}
+.logo svg{width:28px;height:28px}
+.search{flex:1;min-width:160px;order:3;flex-basis:100%}
+@media(min-width:760px){.search{order:0;flex-basis:auto}}
+.search input{width:100%;padding:10px 14px;border-radius:999px;border:0;background:#fff;color:#1C313E}
+.btn{border:0;border-radius:999px;padding:10px 18px;font-weight:600;transition:transform .15s}
+.btn:active{transform:scale(.97)}
+.gold{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0F2F35}.btn:disabled{opacity:.5;cursor:not-allowed}
+.ghost{background:transparent;border:1px solid rgba(255,255,255,.5);color:#fff}
+.cart{position:relative;background:none;border:0;color:#fff;font-size:1.4rem;padding:4px 8px}
+.cart b{position:absolute;top:-4px;right:-4px;background:var(--gold);color:#1C313E;border-radius:999px;font-size:.7rem;min-width:18px;height:18px;display:grid;place-items:center}
+main{max-width:1180px;margin:auto;padding:0 16px 80px}
+.hero{margin:20px 0 32px;border-radius:20px;color:#fff;padding:56px 28px;background:linear-gradient(120deg,var(--navy),var(--petrol));position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border:2px solid var(--gold);border-radius:50%;opacity:.35}
+.hero h1{font-size:clamp(2rem,5vw,3.4rem);margin:0 0 12px;max-width:14ch;line-height:1.1}
+.hero p{max-width:46ch;color:#d3dfe2;margin:0 0 22px}
+.row{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.row h2{margin:0;font-size:1.6rem}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 14px;font-size:.9rem}
+.chip.on{background:var(--petrol);color:#fff;border-color:var(--petrol)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.pc{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
+.pc .im{aspect-ratio:4/3;position:relative;background:var(--line)}
+.pc img{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;top:10px;left:10px;background:var(--gold);color:#1C313E;font-size:.75rem;font-weight:700;padding:3px 10px;border-radius:999px}
+.pb{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.pb h3{margin:0;font-size:1.1rem}
+.cat{color:var(--mute);font-size:.8rem}
+.stars{color:var(--gold);letter-spacing:2px}
+.price{font-size:1.2rem;font-weight:700;color:var(--petrol)}
+:root[data-theme="dark"] .price{color:var(--gold)}
+.old{color:var(--mute);text-decoration:line-through;font-size:.9rem;margin-left:8px;font-weight:400}
+.acts{display:grid;gap:8px;margin-top:auto;padding-top:8px}
+.buy{background:var(--petrol);color:#fff;border-radius:10px}
+.wa{background:var(--wa);color:#fff;border-radius:10px;text-align:center;text-decoration:none;display:block;padding:10px 18px;font-weight:600}
+.empty{padding:40px;text-align:center;color:var(--mute);border:1px dashed var(--line);border-radius:16px}
+.modal{position:fixed;inset:0;background:rgba(10,20,25,.6);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+.modal.open{display:flex}
+.box{background:var(--card);border-radius:18px;padding:24px;width:100%;max-width:440px;max-height:90vh;overflow:auto;animation:pop .2s ease}
+@keyframes pop{from{transform:translateY(10px) scale(.98);opacity:0}}
+@media(prefers-reduced-motion:reduce){.box{animation:none}}
+label{display:block;font-size:.85rem;font-weight:600;margin:12px 0 4px}
+input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg)}
+.sum{background:var(--bg);border-radius:10px;padding:10px 12px;margin-bottom:6px;display:flex;justify-content:space-between;gap:8px}
+.ok{text-align:center}.ok .tick{font-size:3rem}
+.wawid{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.3);z-index:40;text-decoration:none}
+.wawid svg{width:32px;height:32px;fill:#fff}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;margin-top:16px}
+.tabs{display:flex;gap:8px;margin:24px 0 0;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:var(--card);padding:10px 18px;border-radius:12px;font-weight:600}
+.tab.on{background:var(--petrol);color:#fff;border-color:var(--petrol)}
+.two{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:620px){.two{grid-template-columns:1fr 1fr}}
+.presets{display:flex;gap:8px;flex-wrap:wrap}
+.presets img{width:56px;height:42px;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer}
+.presets img.on{border-color:var(--gold)}
+.inv{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.inv img{width:54px;height:42px;object-fit:cover;border-radius:8px}
+.inv div{flex:1;min-width:0}
+.del{background:#fde8e8;color:#b42318;border:0;border-radius:8px;padding:6px 12px;font-weight:600}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:720px;font-size:.9rem}
+th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{color:var(--mute);font-weight:600}
+td select{padding:6px 8px;width:auto}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 18px;border-radius:999px;z-index:60;display:none}
+footer{text-align:center;background:var(--deep);color:#c9d8db;padding:28px 16px calc(28px + env(safe-area-inset-bottom,0px));font-size:.85rem;margin-top:40px}
+.lg{width:46px;height:46px;border-radius:50%;overflow:hidden;display:block;flex:none;background:#1C4951}
+.lg svg,.lg img{width:100%;height:100%;object-fit:cover;display:block}
+.row .chips{flex-basis:100%}.chip.on .ar{color:#d3dfe2}
+.pc .im,.pb h3{cursor:pointer}
+.addc{background:var(--gold);color:#0F2F35;border-radius:10px}
+.drw{position:fixed;inset:0;background:rgba(10,20,25,.55);z-index:55;display:none;justify-content:flex-end}
+.drw.open{display:flex}
+.dp{background:var(--card);width:100%;max-width:400px;height:100%;display:flex;flex-direction:column;animation:sl .2s ease}
+@keyframes sl{from{transform:translateX(30px);opacity:0}}
+@media(prefers-reduced-motion:reduce){.dp{animation:none}}
+.dh{background:var(--petrol);color:#fff;padding:16px;padding-top:calc(16px + env(safe-area-inset-top,0px));display:flex;justify-content:space-between;align-items:center;font-size:1.1rem}
+.dh button{background:none;border:0;color:#fff;font-size:1.4rem}
+.dl{flex:1;overflow:auto;padding:8px 16px}
+.ci{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.ci img{width:64px;height:52px;object-fit:cover;border-radius:8px}
+.ci>div{flex:1;min-width:0}
+.qty{display:inline-flex;align-items:center;gap:10px;margin-top:6px}
+.qty button{width:30px;height:30px;border-radius:8px;border:1px solid var(--line);background:var(--bg)}
+.df{padding:16px;padding-bottom:calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.tot{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.up{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.up img{width:72px;height:54px;object-fit:cover;border-radius:8px;display:none}
+.ar{font-family:Cairo,"Noto Naskh Arabic","Segoe UI",Tahoma,Arial,sans-serif;font-size:.88em;font-weight:400;color:var(--mute);direction:rtl;unicode-bidi:isolate}
+.ar::after{content:" |";opacity:.4}
+.ar.bl{display:block;margin-top:2px}.ar.bl::after{content:none}
+.btn .ar,.chip.on .ar,.tab.on .ar,.hero .ar,header .ar,.del .ar{color:inherit;opacity:.85}
+.hero h1 .ar{font-size:.5em;margin-top:8px}.hero p .ar{margin-top:6px}
+.pb .bl,.box .bl{text-align:right}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&display=swap">
+</head>
+<body>
+<div class="bar" id="bar"></div>
+<header><div class="hd">
+  <div class="logo"><span class="lg" id="lg"></span>Dream Home</div>
+  <div class="search" id="searchWrap"><input id="q" type="search" placeholder="Search furniture, lighting, decor… | ابحث عن الأثاث والإضاءة والديكور…" aria-label="Search products"></div>
+  <button class="cart" id="cartBtn" aria-label="Cart">🛒<b id="cnt">0</b></button>
+  <button class="btn gold" id="mode">⚙️ Admin Panel <span class="ar">لوحة التحكم</span></button>
+</div></header>
+
+<main>
+<section id="store">
+  <div class="hero"><h1>Turn Your Dream Home Into Reality<span class="ar bl">حوّل منزل أحلامك إلى حقيقة</span></h1><p>Furniture, lighting and decor chosen for calm, lived-in rooms. Order in a minute and pay when it arrives.<span class="ar bl">أثاث وإضاءة وديكور لغرف هادئة. اطلب في دقيقة وادفع عند الاستلام.</span></p><button class="btn gold" onclick="document.getElementById('prods').scrollIntoView({behavior:'smooth'})">Shop the collection <span class="ar">تسوّق المجموعة</span></button></div>
+  <div class="row" id="prods"><h2>Featured Products <span class="ar">المنتجات المميزة</span></h2><div class="chips" id="chips"></div></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section id="admin" hidden>
+  <div class="tabs">
+    <button class="tab on" data-t="a">Add &amp; manage products <span class="ar">إضافة وتعديل المنتجات</span></button>
+    <button class="tab" data-t="b">Orders received <span class="ar">سجل الطلبات الواردة</span> (<span id="ocnt">0</span>)</button>
+    <button class="tab" data-t="c">Store settings <span class="ar">إعدادات المتجر</span></button>
+  </div>
+  <div id="tabA" class="two">
+    <div class="panel"><h3 style="margin-top:0">Add New Product <span class="ar">إضافة منتج جديد</span></h3>
+      <label>Product title <span class="ar">عنوان المنتج</span></label><input id="nt" placeholder="Modern Desk | مكتب عصري"><label>Arabic title (optional) <span class="ar">العنوان بالعربية (اختياري)</span></label><input id="nta" dir="rtl" placeholder="مكتب عصري">
+      <label>Category <span class="ar">الفئة</span></label><select id="nc"></select>
+      <div class="two" style="gap:10px"><div><label>Price (<span class="cu">DZD</span>) <span class="ar">السعر</span></label><input id="np" type="number" min="0" placeholder="45000"></div><div><label>Old price (<span class="cu">DZD</span>) <span class="ar">السعر القديم</span></label><input id="no" type="number" min="0" placeholder="55000"></div></div>
+      <label>Upload an image from your device <span class="ar">ارفع صورة من جهازك</span></label><div class="up"><input id="nf" type="file" accept="image/*"><img id="nprev" alt="Preview"></div>
+      <label>Or paste an image URL (optional) <span class="ar">أو الصق رابط الصورة (اختياري)</span></label><input id="ni" placeholder="https://…">
+      <label>Description <span class="ar">الوصف</span></label><textarea id="nd" rows="3" placeholder="Solid oak desk with cable tray… | مكتب من خشب البلوط مع حامل للأسلاك…"></textarea>
+      <button class="btn gold" style="width:100%;margin-top:14px" id="add">➕ Add Product to Store <span class="ar">أضف المنتج إلى المتجر</span></button>
+    </div>
+    <div class="panel"><h3 style="margin-top:0">Current inventory (<span id="icnt">0</span>) <span class="ar">المخزون الحالي</span></h3><div id="inv"></div></div><div class="panel" style="grid-column:1/-1"><h3 style="margin-top:0">Store logo <span class="ar">شعار المتجر</span></h3><div class="up"><input id="lf" type="file" accept="image/*"><button class="btn" style="background:var(--bg)" id="lr">Use default logo <span class="ar">استخدم الشعار الافتراضي</span></button></div></div>
+  </div>
+  <div id="tabB" hidden><div class="panel"><div class="row" style="margin:0 0 12px"><h3 style="margin:0">Incoming orders <span class="ar">الطلبات الواردة</span></h3><select id="of" style="width:auto" aria-label="Filter by status"></select></div><div class="tw"><table><thead><tr><th>Customer <span class="ar">الزبون</span></th><th>Phone <span class="ar">الهاتف</span></th><th>Wilaya / Commune <span class="ar">الولاية / البلدية</span></th><th>Product(s) <span class="ar">المنتجات</span></th><th>Total <span class="ar">المجموع</span></th><th>Date <span class="ar">التاريخ</span></th><th>Status <span class="ar">الحالة</span></th><th>Actions <span class="ar">الإجراءات</span></th></tr></thead><tbody id="orders"></tbody></table></div><div id="noord" class="empty" style="margin-top:12px"></div></div></div>
+  <div id="tabC" hidden><div class="panel"><h3 style="margin-top:0">Store settings <span class="ar">إعدادات المتجر</span></h3><div class="sg">
+    <div><label>WhatsApp number (e.g. 213555123456 or 0555123456) <span class="ar">رقم واتساب (مثال: 213555123456 أو 0555123456)</span></label><input id="sw" inputmode="tel"><label>Contact phone <span class="ar">هاتف الاتصال</span></label><input id="sp"><label>Contact email <span class="ar">البريد الإلكتروني</span></label><input id="se" type="email"><label>Address <span class="ar">العنوان</span></label><input id="sa"></div>
+    <div><label>Top banner announcement <span class="ar">نص الشريط العلوي</span></label><input id="sb"><label>Flat shipping fee (0 = free delivery) <span class="ar">رسوم الشحن الثابتة (0 = توصيل مجاني)</span></label><input id="sf" type="number" min="0"><label>Delivery note (shown at checkout) <span class="ar">ملاحظة التوصيل (تظهر عند الطلب)</span></label><input id="sn"><label>Currency label <span class="ar">رمز العملة</span></label><input id="sc" maxlength="8"></div></div>
+    <button class="btn gold" style="margin-top:16px" id="ss">Save settings <span class="ar">حفظ الإعدادات</span></button></div></div>
+  </section>
+</main>
+<footer id="ft"></footer>
+
+<a class="wawid" id="wawid" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.300 0 .5l-.4.600c-.1.100-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.200.1.800-.1 1.300z"/></svg></a>
+
+<div class="drw" id="drw"><aside class="dp" role="dialog" aria-label="Shopping cart"><div class="dh"><b>Your Cart <span class="ar">سلتك</span></b><button id="dx" aria-label="Close cart">✕</button></div><div class="dl" id="dl"></div><div class="df"><div class="tot"><span>Total <span class="ar">المجموع</span></span><span id="dt">0 DZD</span></div><button class="btn gold" style="width:100%" id="go">Proceed to COD Checkout <span class="ar">متابعة الطلب والدفع عند الاستلام</span></button></div></aside></div>
+<div class="modal" id="m"><div class="box" id="mb"></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+var WA="213000000000"; // replace with the shop's WhatsApp number (international format, no +)
+var WIL="Adrar,Chlef,Laghouat,Oum El Bouaghi,Batna,Béjaïa,Biskra,Béchar,Blida,Bouira,Tamanrasset,Tébessa,Tlemcen,Tiaret,Tizi Ouzou,Alger,Djelfa,Jijel,Sétif,Saïda,Skikda,Sidi Bel Abbès,Annaba,Guelma,Constantine,Médéa,Mostaganem,M'Sila,Mascara,Ouargla,Oran,El Bayadh,Illizi,Bordj Bou Arréridj,Boumerdès,El Tarf,Tindouf,Tissemsilt,El Oued,Khenchela,Souk Ahras,Tipaza,Mila,Aïn Defla,Naâma,Aïn Témouchent,Ghardaïa,Relizane,Timimoun,Bordj Badji Mokhtar,Ouled Djellal,Béni Abbès,In Salah,In Guezzam,Touggourt,Djanet,El M'Ghair,El Meniaa".split(",");
+var STATUS=["Pending","Confirmed","Shipped","Delivered","Cancelled"];
+function art(c1,c2,kind){var s={sofa:'<rect x="40" y="95" width="220" height="50" rx="14" fill="#fff" opacity=".9"/><rect x="55" y="65" width="190" height="45" rx="14" fill="#fff" opacity=".7"/><rect x="30" y="85" width="30" height="60" rx="12" fill="#fff"/><rect x="240" y="85" width="30" height="60" rx="12" fill="#fff"/>',lamp:'<path d="M110 40h80l25 60h-130z" fill="#fff" opacity=".9"/><rect x="146" y="100" width="8" height="45" fill="#fff"/><rect x="120" y="143" width="60" height="8" rx="4" fill="#fff"/>',desk:'<rect x="40" y="70" width="220" height="14" rx="4" fill="#fff"/><rect x="55" y="84" width="10" height="62" fill="#fff"/><rect x="235" y="84" width="10" height="62" fill="#fff"/><rect x="170" y="84" width="60" height="30" fill="#fff" opacity=".6"/>',vase:'<path d="M130 45h40l-6 25c28 20 22 70-14 76-36-6-42-56-14-76z" fill="#fff" opacity=".9"/>',tv:'<rect x="40" y="105" width="220" height="30" rx="4" fill="#fff"/><rect x="95" y="50" width="110" height="55" rx="3" fill="#fff" opacity=".6"/>',shelf:'<rect x="70" y="35" width="8" height="110" fill="#fff"/><rect x="222" y="35" width="8" height="110" fill="#fff"/><rect x="70" y="60" width="160" height="7" fill="#fff"/><rect x="70" y="100" width="160" height="7" fill="#fff"/><rect x="70" y="140" width="160" height="7" fill="#fff"/>',mirror:'<ellipse cx="150" cy="95" rx="55" ry="70" fill="none" stroke="#fff" stroke-width="10"/><ellipse cx="150" cy="95" rx="44" ry="59" fill="#fff" opacity=".25"/>'}[kind];
+var svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 190"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+c1+'"/><stop offset="1" stop-color="'+c2+'"/></linearGradient></defs><rect width="300" height="190" fill="url(#g)"/>'+s+'</svg>';
+return "data:image/svg+xml;utf8,"+encodeURIComponent(svg)}
+var LG='<svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="48" fill="#1C4951" stroke="#D4AF37" stroke-width="3"/><path d="M50 22 24 46h8v24h36V46h8z" fill="none" stroke="#D4AF37" stroke-width="4" stroke-linejoin="round"/><path d="M44 70V54h12v16" fill="none" stroke="#D4AF37" stroke-width="4"/></svg>';
+var CATS=[["All","All Products","الكل"],["Tables & Desks","Tables & Desks","طاولات ومكاتب"],["TV Units","TV Units & Media Stands","حوامل التلفزيون"],["Shelves","Shelves & Bookcases","رفوف وحوامل كتب"],["Decor","Other Home Decor","ديكورات وإكسسوارات"]];
+var P=[
+{id:3,t:"Modern Oak Desk",c:"Tables & Desks",p:58000,o:69000,i:art("#1C313E","#40586b","desk"),d:"Solid oak desk with a hidden cable tray."},
+{id:4,t:"Marble Coffee Table",c:"Tables & Desks",p:36500,o:0,i:art("#3d5a52","#8fb3a6","desk"),d:"Round marble top on a brass base."},
+{id:5,t:"Walnut TV Unit 180cm",c:"TV Units",p:72000,o:85000,i:art("#1C4951","#0F2F35","tv"),d:"Low media console with two drawers and cable management."},
+{id:6,t:"Open Bookcase",c:"Shelves",p:39000,o:46000,i:art("#8a6d1d","#D4AF37","shelf"),d:"Five-tier bookcase in oak veneer."},
+{id:7,t:"Oval Wall Mirror",c:"Decor",p:18900,o:22000,i:art("#3d5a52","#8fb3a6","mirror"),d:"Oval mirror with a slim black metal frame."},
+{id:8,t:"Ceramic Table Vase",c:"Decor",p:6900,o:8500,i:art("#7a5c4a","#c49a7a","vase"),d:"Hand-glazed stoneware vase in a matte clay tone."}];
+var S={wa:"213000000000",ph:"",em:"",ad:"",bar:"🚚 Fast Delivery to 58 Provinces + Cash on Delivery Available! | 🚚 توصيل سريع إلى 58 ولاية + الدفع عند الاستلام متوفر!",ship:0,note:"Pay in cash when your order arrives. | ادفع نقدًا عند استلام طلبك.",cur:"DZD"};
+var O=[],cart=[],cat="All",nid=9,upImg="",logoData="";
+try{var sv=JSON.parse(localStorage.getItem("dh2"));if(sv){P=sv.P;O=sv.O;nid=sv.n;if(sv.S)for(var k in sv.S)S[k]=sv.S[k]}logoData=localStorage.getItem("dhl")||""}catch(e){}
+var TA={3:"مكتب بلوط عصري",4:"طاولة قهوة رخامية",5:"حامل تلفزيون من الجوز 180 سم",6:"مكتبة مفتوحة",7:"مرآة جدارية بيضاوية",8:"مزهرية سيراميك"};
+P=P.filter(function(x){return x.c!=="Chairs"});P.forEach(function(x){if(!x.ta&&TA[x.id])x.ta=TA[x.id]});
+if(S.bar==="🚚 Fast Delivery to 58 Provinces + Cash on Delivery Available!")S.bar="🚚 Fast Delivery to 58 Provinces + Cash on Delivery Available! | 🚚 توصيل سريع إلى 58 ولاية + الدفع عند الاستلام متوفر!";
+if(S.note==="Pay in cash when your order arrives.")S.note="Pay in cash when your order arrives. | ادفع نقدًا عند استلام طلبك.";
+O.forEach(function(o,k){if(!o.id)o.id=Date.now()+k;if(o.st==="New")o.st="Pending"});
+function save(){try{localStorage.setItem("dh2",JSON.stringify({P:P,O:O,n:nid,S:S}))}catch(e){toast("Storage is full. Use a smaller image or delete products. | مساحة التخزين ممتلئة. استخدم صورة أصغر أو احذف منتجات.")}}
+function $(i){return document.getElementById(i)}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function fmt(n){return Number(n).toLocaleString("fr-DZ")+" "+S.cur}
+function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.h);toast.h=setTimeout(function(){e.style.display="none"},2600)}
+function waLink(m){return "https://wa.me/"+S.wa+"?text="+encodeURIComponent(m)}
+function clb(c){var k=CATS.filter(function(x){return x[0]===c})[0];return k?esc(k[1])+' <span class="ar">'+k[2]+'</span>':esc(c)}
+function cl(c){var k=CATS.filter(function(x){return x[0]===c})[0];return k?k[1]:c}
+function byId(id){return P.filter(function(x){return x.id==id})[0]}
+function setLogo(){$("lg").innerHTML=logoData?'<img src="'+esc(logoData)+'" alt="Dream Home logo">':LG}
+function readImg(file,max,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var k=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=im.width*k;c.height=im.height*k;c.getContext("2d").drawImage(im,0,0,c.width,c.height);cb(c.toDataURL("image/jpeg",.82))};im.onerror=function(){toast("This file is not a readable image | هذا الملف ليس صورة صالحة")};im.src=r.result};r.readAsDataURL(file)}
+$("nc").innerHTML=CATS.slice(1).map(function(c){return '<option value="'+esc(c[0])+'">'+c[1]+" | "+c[2]+'</option>'}).join("");
+
+function line(){return cart.map(function(c){var x=byId(c.id);return x&&Object.assign({},x,{q:c.q})}).filter(Boolean)}
+function addCart(id){var c=cart.filter(function(x){return x.id==id})[0];if(c)c.q++;else cart.push({id:id,q:1});render();openD()}
+function renderCart(){var L=line(),t=L.reduce(function(a,x){return a+x.p*x.q},0);
+  $("dl").innerHTML=L.length?L.map(function(x){return '<div class="ci"><img src="'+esc(x.i)+'" alt=""><div><b>'+esc(x.t)+'</b><br><span class="cat">'+fmt(x.p)+'</span><br><span class="qty"><button data-q="-1" data-i="'+x.id+'" aria-label="Decrease quantity">−</button><b>'+x.q+'</b><button data-q="1" data-i="'+x.id+'" aria-label="Increase quantity">+</button></span></div><div style="text-align:right;flex:none"><b>'+fmt(x.p*x.q)+'</b><br><button class="del" style="margin-top:8px" data-r="'+x.id+'">Remove <span class="ar">إزالة</span></button></div></div>'}).join(""):'<div class="empty" style="margin-top:16px">Your cart is empty. Add a product to get started. <span class="ar">سلتك فارغة. أضف منتجًا للبدء.</span></div>';
+  $("dt").textContent=fmt(t);$("go").disabled=!L.length}
+function openD(){renderCart();$("drw").classList.add("open")}
+function closeD(){$("drw").classList.remove("open")}
+$("cartBtn").onclick=openD;$("dx").onclick=closeD;
+$("drw").onclick=function(e){if(e.target.id==="drw")closeD()};
+$("dl").onclick=function(e){var d=e.target.dataset;
+  if(d.q){var c=cart.filter(function(x){return x.id==d.i})[0];c.q+=+d.q;if(c.q<1)cart=cart.filter(function(x){return x!==c})}
+  else if(d.r)cart=cart.filter(function(x){return x.id!=d.r});
+  else return;render();renderCart()};
+$("go").onclick=function(){closeD();openOrder(line(),true)};
+
+function render(){
+  $("chips").innerHTML=CATS.map(function(c){return '<button class="chip'+(c[0]===cat?' on':'')+'" data-c="'+esc(c[0])+'">'+c[1]+' <span class="ar">'+c[2]+'</span></button>'}).join("");
+  var q=$("q").value.toLowerCase().trim();
+  var L=P.filter(function(x){return(cat==="All"||x.c===cat)&&(x.t+x.c+x.d).toLowerCase().indexOf(q)>-1});
+  $("grid").innerHTML=L.length?L.map(function(x){
+    var off=x.o>x.p?Math.round((1-x.p/x.o)*100):0;
+    return '<article class="pc"><div class="im" data-v="'+x.id+'"><img src="'+esc(x.i)+'" alt="'+esc(x.t)+'" loading="lazy" data-v="'+x.id+'">'+(off?'<span class="badge">-'+off+'%</span>':'')+'</div><div class="pb"><span class="cat">'+clb(x.c)+'</span><h3 data-v="'+x.id+'">'+esc(x.t)+(x.ta?'<span class="ar bl">'+esc(x.ta)+'</span>':'')+'</h3><div class="stars" aria-label="5 stars">★★★★★</div><div class="price">'+fmt(x.p)+(x.o>x.p?'<span class="old">'+fmt(x.o)+'</span>':'')+'</div><div class="acts"><button class="btn addc" data-a="'+x.id+'">🛒 Add to Cart <span class="ar">أضف إلى السلة</span></button><button class="btn buy" data-b="'+x.id+'">Buy Now / Quick Order <span class="ar">اشترِ الآن / طلب سريع</span></button><a class="wa" target="_blank" rel="noopener" href="'+waLink("Hello Dream Home, I want to order: "+x.t+" ("+fmt(x.p)+")")+'">🟢 Order via WhatsApp <span class="ar">اطلب عبر واتساب</span></a></div></div></article>'}).join(""):'<div class="empty" style="grid-column:1/-1">No products in this category yet. <span class="ar">لا توجد منتجات في هذه الفئة بعد.</span></div>';
+  $("inv").innerHTML=P.length?P.map(function(x){return '<div class="inv"><img src="'+esc(x.i)+'" alt=""><div><b>'+esc(x.t)+'</b><br><span class="cat">'+clb(x.c)+' · '+fmt(x.p)+'</span></div><button class="del'+(armKey==="p"+x.id?' arm':'')+'" data-d="'+x.id+'">'+(armKey==="p"+x.id?'Tap again to confirm <span class="ar">اضغط مجددًا للتأكيد</span>':'Delete <span class="ar">حذف</span>')+'</button></div>'}).join(""):'<div class="empty">No products. Add your first one. <span class="ar">لا توجد منتجات. أضف أول منتج.</span></div>';
+  $("icnt").textContent=P.length;
+  var fo=$("of").value||"All",LO=O.filter(function(o){return fo==="All"||o.st===fo});
+  $("orders").innerHTML=LO.map(function(o){var ar=armKey==="o"+o.id;return '<tr><td>'+esc(o.n)+'</td><td>'+esc(o.ph)+'</td><td>'+esc(o.w)+(o.cm?' / '+esc(o.cm):'')+'</td><td style="white-space:normal;min-width:160px">'+esc(o.pr)+'</td><td>'+fmt(o.tot)+'</td><td>'+esc(o.dt)+'</td><td><select data-s="'+o.id+'">'+STATUS.map(function(x){return '<option value="'+x+'"'+(x===o.st?' selected':'')+'>'+SL(x)+'</option>'}).join("")+'</select></td><td><button class="btn gold" style="padding:6px 12px" data-ok="'+o.id+'"'+(o.st==="Confirmed"?' disabled':'')+'>Confirm <span class="ar">تأكيد</span></button> <button class="del'+(ar?' arm':'')+'" data-od="'+o.id+'">'+(ar?'Tap again to confirm <span class="ar">اضغط مجددًا للتأكيد</span>':'Delete <span class="ar">حذف</span>')+'</button></td></tr>'}).join("");
+  $("noord").innerHTML=O.length?'No orders with this status. <span class="ar">لا توجد طلبات بهذه الحالة.</span>':'No orders yet. Orders placed in the store appear here. <span class="ar">لا توجد طلبات بعد. ستظهر هنا الطلبات الواردة من المتجر.</span>';$("noord").hidden=LO.length>0;$("ocnt").textContent=O.length;
+  $("cnt").textContent=cart.reduce(function(a,c){return a+c.q},0);
+}
+$("q").oninput=render;
+$("chips").onclick=function(e){var b=e.target.closest("[data-c]");if(b){cat=b.dataset.c;render()}};
+$("grid").onclick=function(e){var d=e.target.closest("[data-a],[data-b],[data-v]");if(!d)return;var D=d.dataset;
+  if(D.a)addCart(+D.a);else if(D.b)openOrder([Object.assign({},byId(D.b),{q:1})]);else if(D.v)openDetail(+D.v)};
+$("inv").onclick=function(e){var d=e.target.dataset.d;if(d)twoStep("p"+d,function(){P=P.filter(function(x){return x.id!=d});cart=cart.filter(function(c){return c.id!=d});save();toast("Product deleted | تم حذف المنتج")})};
+var armKey=null,armT;
+function twoStep(key,fn){clearTimeout(armT);if(armKey===key){armKey=null;fn();render();return}armKey=key;render();armT=setTimeout(function(){armKey=null;render()},3500)}
+$("orders").onchange=function(e){var k=e.target.dataset.s;if(k){O.filter(function(x){return x.id==k})[0].st=e.target.value;save();render()}};
+$("orders").onclick=function(e){var d=e.target.dataset;if(d.ok){O.filter(function(x){return x.id==d.ok})[0].st="Confirmed";save();render();toast("Order confirmed | تم تأكيد الطلب")}else if(d.od)twoStep("o"+d.od,function(){O=O.filter(function(x){return x.id!=d.od});save();toast("Order deleted | تم حذف الطلب")})};
+$("of").onchange=render;
+
+function openDetail(id){var x=byId(id);
+  $("mb").innerHTML='<img src="'+esc(x.i)+'" alt="'+esc(x.t)+'" style="width:100%;border-radius:12px;aspect-ratio:4/3;object-fit:cover"><span class="cat">'+clb(x.c)+'</span><h3 style="margin:4px 0;font-size:1.3rem">'+esc(x.t)+(x.ta?'<span class="ar bl">'+esc(x.ta)+'</span>':'')+'</h3><div class="stars">★★★★★</div><div class="price">'+fmt(x.p)+(x.o>x.p?'<span class="old">'+fmt(x.o)+'</span>':'')+'</div><p>'+esc(x.d||"")+'</p><div class="acts"><button class="btn addc" id="da">🛒 Add to Cart <span class="ar">أضف إلى السلة</span></button><button class="btn buy" id="db">Buy Now / Quick Order <span class="ar">اشترِ الآن / طلب سريع</span></button><button class="btn" style="background:var(--bg)" id="cx">Close <span class="ar">إغلاق</span></button></div>';
+  $("m").classList.add("open");$("cx").onclick=closeM;
+  $("da").onclick=function(){closeM();addCart(id)};
+  $("db").onclick=function(){openOrder([Object.assign({},x,{q:1})])}}
+function openOrder(items,fromCart){
+  var sub=items.reduce(function(a,x){return a+x.p*x.q},0),ship=+S.ship||0,tot=sub+ship;
+  $("mb").innerHTML='<h3 style="margin:0 0 10px">Express Checkout – Cash on Delivery <span class="ar bl">الطلب السريع – الدفع عند الاستلام</span></h3>'+items.map(function(x){return '<div class="sum"><span>'+esc(x.t)+' × '+x.q+'</span><b>'+fmt(x.p*x.q)+'</b></div>'}).join("")+'<form id="f"><label>Full name <span class="ar">الاسم الكامل</span></label><input name="n" required autocomplete="name"><label>Phone <span class="ar">رقم الهاتف</span></label><input name="ph" type="tel" required pattern="[0-9+ ]{9,15}" placeholder="05 55 12 34 56" autocomplete="tel"><label>Wilaya <span class="ar">الولاية</span></label><select name="w" required><option value="">Select your wilaya | اختر ولايتك</option>'+WIL.map(function(w,i){return '<option>'+String(i+1).padStart(2,"0")+' - '+esc(w)+'</option>'}).join("")+'</select><label>Commune <span class="ar">البلدية</span></label><input name="cm" required><div class="sum" style="margin-top:14px"><span>Delivery <span class="ar">التوصيل</span></span><b>'+(ship?fmt(ship):'Free <span class="ar">مجاني</span>')+'</b></div><div class="sum"><span>Total (pay on delivery) <span class="ar">المجموع (الدفع عند الاستلام)</span></span><b>'+fmt(tot)+'</b></div>'+(S.note?'<p class="cat">'+esc(S.note)+'</p>':'')+'<button class="btn gold" style="width:100%;margin-top:8px" type="submit">Confirm Order <span class="ar">تأكيد الطلب</span></button><button class="btn" style="width:100%;margin-top:8px;background:var(--bg)" type="button" id="cx">Cancel <span class="ar">إلغاء</span></button></form>';
+  $("m").classList.add("open");$("cx").onclick=closeM;
+  $("f").onsubmit=function(e){e.preventDefault();var d=new FormData(e.target);
+    O.unshift({id:Date.now(),n:d.get("n"),ph:d.get("ph"),w:d.get("w"),cm:d.get("cm"),pr:items.map(function(x){return x.t+(x.q>1?" ×"+x.q:"")}).join(", "),tot:tot,dt:new Date().toLocaleString("en-GB",{dateStyle:"medium",timeStyle:"short"}),st:"Pending"});
+    if(fromCart)cart=[];save();render();
+    $("mb").innerHTML='<div class="ok"><div class="tick">✅</div><h3>Order received! <span class="ar bl">تم استلام طلبك!</span></h3><p>Thank you '+esc(d.get("n"))+'. We will call you on '+esc(d.get("ph"))+' to confirm delivery to '+esc(d.get("w"))+'. You pay on delivery.<span class="ar bl">شكرًا لك. سنتصل بك لتأكيد التوصيل، وتدفع عند الاستلام.</span></p><button class="btn gold" id="cx2">Continue shopping <span class="ar">متابعة التسوق</span></button></div>';$("cx2").onclick=closeM};
+}
+function closeM(){$("m").classList.remove("open")}
+$("m").onclick=function(e){if(e.target.id==="m")closeM()};
+document.onkeydown=function(e){if(e.key==="Escape"){closeM();closeD()}};
+
+var admin=false;
+$("mode").onclick=function(){admin=!admin;closeD();$("store").hidden=admin;$("admin").hidden=!admin;$("searchWrap").style.visibility=admin?"hidden":"visible";$("wawid").style.display=admin?"none":"grid";this.innerHTML=admin?'🛍️ View Store <span class="ar">عرض المتجر</span>':'⚙️ Admin Panel <span class="ar">لوحة التحكم</span>';window.scrollTo(0,0)};
+document.querySelectorAll(".tab").forEach(function(t){t.onclick=function(){document.querySelectorAll(".tab").forEach(function(x){x.classList.toggle("on",x===t)});$("tabA").hidden=t.dataset.t!=="a";$("tabB").hidden=t.dataset.t!=="b";$("tabC").hidden=t.dataset.t!=="c"}});
+$("nf").onchange=function(){var f=this.files[0];if(!f)return;readImg(f,900,function(u){upImg=u;var p=$("nprev");p.src=u;p.style.display="block"})};
+$("lf").onchange=function(){var f=this.files[0];if(!f)return;readImg(f,300,function(u){logoData=u;try{localStorage.setItem("dhl",u)}catch(e){}setLogo();toast("Logo updated | تم تحديث الشعار")})};
+$("lr").onclick=function(){logoData="";try{localStorage.removeItem("dhl")}catch(e){}$("lf").value="";setLogo()};
+$("add").onclick=function(){
+  var t=$("nt").value.trim(),p=+$("np").value;
+  if(!t||!p){toast("Enter a title and a price | أدخل العنوان والسعر");return}
+  var img=upImg||$("ni").value.trim();
+  if(!img){toast("Upload an image or paste an image URL | ارفع صورة أو الصق رابطها");return}
+  P.unshift({id:nid++,t:t,ta:$("nta").value.trim(),c:$("nc").value,p:p,o:+$("no").value||0,i:img,d:$("nd").value.trim()});
+  ["nt","nta","np","no","ni","nd","nf"].forEach(function(i){$(i).value=""});upImg="";$("nprev").style.display="none";
+  save();render();toast("Product added to the store | تمت إضافة المنتج إلى المتجر");
+};
+function applyS(){$("bar").textContent=S.bar;$("wawid").href=waLink("Hello Dream Home, I have a question.");
+  var c=[S.ph&&"📞 "+S.ph,S.em&&"✉️ "+S.em,S.ad&&"📍 "+S.ad].filter(Boolean).join("   ");
+  $("ft").innerHTML=(c?'<div>'+esc(c)+'</div>':'')+'<div style="margin-top:6px">© Dream Home</div>';
+  document.querySelectorAll(".cu").forEach(function(e){e.textContent=S.cur})}
+function fillS(){$("sw").value=S.wa;$("sp").value=S.ph;$("se").value=S.em;$("sa").value=S.ad;$("sb").value=S.bar;$("sf").value=S.ship;$("sn").value=S.note;$("sc").value=S.cur}
+$("ss").onclick=function(){var d=$("sw").value.replace(/\D/g,"");if(d.charAt(0)==="0")d="213"+d.slice(1);
+  if(d.length<9){toast("Enter a valid WhatsApp number | أدخل رقم واتساب صحيحًا");return}
+  S.wa=d;S.ph=$("sp").value.trim();S.em=$("se").value.trim();S.ad=$("sa").value.trim();S.bar=$("sb").value.trim()||S.bar;S.ship=Math.max(0,+$("sf").value||0);S.note=$("sn").value.trim();S.cur=$("sc").value.trim()||"DZD";
+  save();applyS();fillS();render();toast("Settings saved | تم حفظ الإعدادات")};
+var AR={All:"All statuses | كل الحالات",Pending:"Pending | قيد الانتظار",Confirmed:"Confirmed | مؤكد",Shipped:"Shipped | تم الشحن",Delivered:"Delivered | تم التسليم",Cancelled:"Cancelled | ملغى"};function SL(x){return AR[x]||x}
+$("of").innerHTML=["All"].concat(STATUS).map(function(x){return '<option value="'+x+'">'+SL(x)+'</option>'}).join("");
+setLogo();applyS();fillS();render();
+</script>
+</body>
+</html>
